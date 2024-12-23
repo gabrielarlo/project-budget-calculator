@@ -1,5 +1,5 @@
 import os
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -51,11 +51,16 @@ def call_gpt_for_budget(project_type):
     :param project_type: The type of project.
     :return: A tuple of modules, phases, and costs.
     """
-    openai.api_key = os.getenv("OPENAI_KEY")
+    client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
 
-    response = openai.Completion.create(
+    response = client.chat.completions.create(
         model="gpt-4",
-        prompt=f"Generate a budget for a {project_type} project.",
+        messages=[
+            {
+                "role": "user",
+                "content": f"Generate a budget for a {project_type} project."
+            }
+        ],
         max_tokens=150
     )
 
