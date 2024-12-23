@@ -1,4 +1,5 @@
 import os
+import json
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -66,7 +67,10 @@ def call_gpt_for_budget(project_type):
 
     # Parse the response from the GPT model
     response_content = response.choices[0].message.content.strip()
-    budget_data = eval(response_content)  # Assuming the response is a valid Python dictionary
+    try:
+        budget_data = json.loads(response_content)
+    except json.JSONDecodeError:
+        raise ValueError("The response from the GPT model is not valid JSON.")
 
     modules = budget_data.get("modules", [])
     phases = budget_data.get("phases", [])
