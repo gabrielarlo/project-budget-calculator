@@ -83,6 +83,11 @@ def call_gpt_for_budget(project_type):
         ("Module2", "Design"): 1200,
         ("Module2", "Development"): 2500,
         ("Module2", "Testing"): 600,
+        ("Module1", "Development"): 2000,
+        ("Module1", "Testing"): 500,
+        ("Module2", "Design"): 1200,
+        ("Module2", "Development"): 2500,
+        ("Module2", "Testing"): 600,
     })
 
     # Example: If the response format is different, adjust the keys accordingly
