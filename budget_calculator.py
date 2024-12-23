@@ -78,7 +78,7 @@ def call_gpt_for_budget(project_type):
     phases = budget_data.get("phases", ["Design", "Development", "Testing"])
     costs = budget_data.get("costs", {
         ("Module1", "Design"): 1000,
-        ("Module1", "Development"): 2000,
+        ("Module1", "Development"): 3000,
         ("Module1", "Testing"): 500,
         ("Module2", "Design"): 1200,
         ("Module2", "Development"): 2500,
