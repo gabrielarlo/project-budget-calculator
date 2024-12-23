@@ -3,6 +3,8 @@ import openai
 from dotenv import load_dotenv
 
 load_dotenv()
+
+class DevelopmentProjectBudget:
     def __init__(self, modules, phases, costs):
         """
         Initialize the budget calculator with modules, phases, and costs.
