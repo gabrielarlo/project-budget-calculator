@@ -64,18 +64,13 @@ def call_gpt_for_budget(project_type):
         max_tokens=150
     )
 
-    # Example of parsing the response
-    # This will need to be adjusted based on the actual response format
-    modules = ["Module1", "Module2"]
-    phases = ["Design", "Development", "Testing"]
-    costs = {
-        ("Module1", "Design"): 1000,
-        ("Module1", "Development"): 3000,
-        ("Module1", "Testing"): 1500,
-        ("Module2", "Design"): 1200,
-        ("Module2", "Development"): 3500,
-        ("Module2", "Testing"): 1800,
-    }
+    # Parse the response from the GPT model
+    response_content = response.choices[0].message.content.strip()
+    budget_data = eval(response_content)  # Assuming the response is a valid Python dictionary
+
+    modules = budget_data.get("modules", [])
+    phases = budget_data.get("phases", [])
+    costs = budget_data.get("costs", {})
 
     return modules, phases, costs
 
