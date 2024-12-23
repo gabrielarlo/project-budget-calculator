@@ -39,12 +39,22 @@ class DevelopmentProjectBudget:
         print(f"Total Project Cost: ${self.calculate_total_cost():.2f}")
 
 
-def ai_generate_budget(project_type):
+def call_gpt_for_budget(project_type):
     """
-    Simulate AI behavior to generate a budget based on project type.
+    Placeholder for calling GPT API to generate a budget based on project type.
     :param project_type: The type of project.
     :return: A tuple of modules, phases, and costs.
     """
+    # This is a placeholder. In a real implementation, you would call the GPT API here.
+    # For example, using OpenAI's API client:
+    # response = openai.Completion.create(
+    #     model="gpt-4o-mini",
+    #     prompt=f"Generate a budget for a {project_type} project.",
+    #     max_tokens=150
+    # )
+    # Parse the response to extract modules, phases, and costs.
+    
+    # Simulated response
     if project_type == "pos for restaurant":
         modules = ["POS Module", "Inventory Module", "Billing Module"]
         phases = ["Design", "Development", "Testing"]
@@ -75,7 +85,7 @@ def ai_generate_budget(project_type):
 
 
 def get_project_budget(project_type):
-    modules, phases, costs = ai_generate_budget(project_type)
+    modules, phases, costs = call_gpt_for_budget(project_type)
     return DevelopmentProjectBudget(modules, phases, costs)
 
 
