@@ -39,7 +39,12 @@ class DevelopmentProjectBudget:
         print(f"Total Project Cost: ${self.calculate_total_cost():.2f}")
 
 
-def get_project_budget(project_type):
+def ai_generate_budget(project_type):
+    """
+    Simulate AI behavior to generate a budget based on project type.
+    :param project_type: The type of project.
+    :return: A tuple of modules, phases, and costs.
+    """
     if project_type == "pos for restaurant":
         modules = ["POS Module", "Inventory Module", "Billing Module"]
         phases = ["Design", "Development", "Testing"]
@@ -66,7 +71,11 @@ def get_project_budget(project_type):
             ("Module2", "Development"): 3500,
             ("Module2", "Testing"): 1800,
         }
+    return modules, phases, costs
 
+
+def get_project_budget(project_type):
+    modules, phases, costs = ai_generate_budget(project_type)
     return DevelopmentProjectBudget(modules, phases, costs)
 
 
