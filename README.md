@@ -6,8 +6,8 @@ This project is a budget calculator that uses OpenAI's GPT model to generate a b
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/gabrielarlo/project-budget-calculator.git
+   cd project-budget-calculator
    ```
 
 2. Install the required dependencies:

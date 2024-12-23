@@ -13,14 +13,14 @@ def call_gpt_for_budget(project_type):
     client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-4o-mini",
         messages=[
             {
                 "role": "user",
-                "content": f"Generate a budget for a '{project_type}' project. Response in json format with root keys as modules, phases, and costs."
+                "content": f"Generate a budget for a '{project_type}' project. Response with requirement modules, phase and costs. make the pricing reasonalbe."
             }
         ],
-        max_tokens=150
+        # max_tokens=200
     )
 
     # Return the raw response content from the GPT model

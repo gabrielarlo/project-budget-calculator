@@ -1,0 +1,36 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "call_gpt_for_budget",
+        "kind": 2,
+        "importPath": "budget_calculator",
+        "description": "budget_calculator",
+        "peekOfCode": "def call_gpt_for_budget(project_type):\n    \"\"\"\n    Call GPT API to generate a budget based on project type.\n    :param project_type: The type of project.\n    :return: Raw response content from GPT.\n    \"\"\"\n    client = OpenAI(api_key=os.getenv(\"OPENAI_KEY\"))\n    response = client.chat.completions.create(\n        model=\"gpt-4o-mini\",\n        messages=[",
+        "detail": "budget_calculator",
+        "documentation": {}
+    }
+]
