@@ -1,4 +1,8 @@
-class DevelopmentProjectBudget:
+import os
+import openai
+from dotenv import load_dotenv
+
+load_dotenv()
     def __init__(self, modules, phases, costs):
         """
         Initialize the budget calculator with modules, phases, and costs.
@@ -45,42 +49,27 @@ def call_gpt_for_budget(project_type):
     :param project_type: The type of project.
     :return: A tuple of modules, phases, and costs.
     """
-    # This is a placeholder. In a real implementation, you would call the GPT API here.
-    # For example, using OpenAI's API client:
-    # response = openai.Completion.create(
-    #     model="gpt-4o-mini",
-    #     prompt=f"Generate a budget for a {project_type} project.",
-    #     max_tokens=150
-    # )
-    # Parse the response to extract modules, phases, and costs.
-    
-    # Simulated response
-    if project_type == "pos for restaurant":
-        modules = ["POS Module", "Inventory Module", "Billing Module"]
-        phases = ["Design", "Development", "Testing"]
-        costs = {
-            ("POS Module", "Design"): 2000,
-            ("POS Module", "Development"): 5000,
-            ("POS Module", "Testing"): 2500,
-            ("Inventory Module", "Design"): 1500,
-            ("Inventory Module", "Development"): 4000,
-            ("Inventory Module", "Testing"): 2000,
-            ("Billing Module", "Design"): 1000,
-            ("Billing Module", "Development"): 3000,
-            ("Billing Module", "Testing"): 1500,
-        }
-    else:
-        print("Unknown project type. Using default example project.")
-        modules = ["Module1", "Module2"]
-        phases = ["Design", "Development", "Testing"]
-        costs = {
-            ("Module1", "Design"): 1000,
-            ("Module1", "Development"): 3000,
-            ("Module1", "Testing"): 1500,
-            ("Module2", "Design"): 1200,
-            ("Module2", "Development"): 3500,
-            ("Module2", "Testing"): 1800,
-        }
+    openai.api_key = os.getenv("OPENAI_KEY")
+
+    response = openai.Completion.create(
+        model="gpt-4",
+        prompt=f"Generate a budget for a {project_type} project.",
+        max_tokens=150
+    )
+
+    # Example of parsing the response
+    # This will need to be adjusted based on the actual response format
+    modules = ["Module1", "Module2"]
+    phases = ["Design", "Development", "Testing"]
+    costs = {
+        ("Module1", "Design"): 1000,
+        ("Module1", "Development"): 3000,
+        ("Module1", "Testing"): 1500,
+        ("Module2", "Design"): 1200,
+        ("Module2", "Development"): 3500,
+        ("Module2", "Testing"): 1800,
+    }
+
     return modules, phases, costs
 
 
