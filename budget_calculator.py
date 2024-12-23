@@ -72,9 +72,15 @@ def call_gpt_for_budget(project_type):
     except json.JSONDecodeError:
         raise ValueError("The response from the GPT model is not valid JSON.")
 
+    # Adjust these keys based on the actual response format
     modules = budget_data.get("modules", [])
     phases = budget_data.get("phases", [])
     costs = budget_data.get("costs", {})
+
+    # Example: If the response format is different, adjust the keys accordingly
+    # modules = budget_data.get("project_modules", [])
+    # phases = budget_data.get("project_phases", [])
+    # costs = budget_data.get("project_costs", {})
 
     return modules, phases, costs
 
