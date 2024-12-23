@@ -59,7 +59,7 @@ def call_gpt_for_budget(project_type):
         messages=[
             {
                 "role": "user",
-                "content": f"Generate a budget for a {project_type} project."
+                "content": f"Generate a budget for a '{project_type}' project. Response in json format with root keys as modules, phases, and costs."
             }
         ],
         max_tokens=150
@@ -67,10 +67,14 @@ def call_gpt_for_budget(project_type):
 
     # Parse the response from the GPT model
     response_content = response.choices[0].message.content.strip()
+    print("Response from GPT model:")
+    print(response_content)
+    
     try:
         budget_data = json.loads(response_content)
     except json.JSONDecodeError:
         raise ValueError("The response from the GPT model is not valid JSON.")
+    
 
     # Adjust these keys based on the actual response format
     # Adjust these keys based on the actual response format
