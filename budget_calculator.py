@@ -39,18 +39,38 @@ class DevelopmentProjectBudget:
         print(f"Total Project Cost: ${self.calculate_total_cost():.2f}")
 
 
-if __name__ == "__main__":
-    # Example usage
-    modules = ["Module1", "Module2"]
-    phases = ["Design", "Development", "Testing"]
-    costs = {
-        ("Module1", "Design"): 1000,
-        ("Module1", "Development"): 3000,
-        ("Module1", "Testing"): 1500,
-        ("Module2", "Design"): 1200,
-        ("Module2", "Development"): 3500,
-        ("Module2", "Testing"): 1800,
-    }
+def get_project_budget(project_type):
+    if project_type == "pos for restaurant":
+        modules = ["POS Module", "Inventory Module", "Billing Module"]
+        phases = ["Design", "Development", "Testing"]
+        costs = {
+            ("POS Module", "Design"): 2000,
+            ("POS Module", "Development"): 5000,
+            ("POS Module", "Testing"): 2500,
+            ("Inventory Module", "Design"): 1500,
+            ("Inventory Module", "Development"): 4000,
+            ("Inventory Module", "Testing"): 2000,
+            ("Billing Module", "Design"): 1000,
+            ("Billing Module", "Development"): 3000,
+            ("Billing Module", "Testing"): 1500,
+        }
+    else:
+        print("Unknown project type. Using default example project.")
+        modules = ["Module1", "Module2"]
+        phases = ["Design", "Development", "Testing"]
+        costs = {
+            ("Module1", "Design"): 1000,
+            ("Module1", "Development"): 3000,
+            ("Module1", "Testing"): 1500,
+            ("Module2", "Design"): 1200,
+            ("Module2", "Development"): 3500,
+            ("Module2", "Testing"): 1800,
+        }
 
-    budget_calculator = DevelopmentProjectBudget(modules, phases, costs)
+    return DevelopmentProjectBudget(modules, phases, costs)
+
+
+if __name__ == "__main__":
+    project_type = input("Enter the project type (e.g., 'pos for restaurant'): ").strip().lower()
+    budget_calculator = get_project_budget(project_type)
     budget_calculator.display_budget_summary()
