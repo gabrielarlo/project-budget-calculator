@@ -76,7 +76,14 @@ def call_gpt_for_budget(project_type):
     # Adjust these keys based on the actual response format
     modules = budget_data.get("modules", ["Module1", "Module2"])
     phases = budget_data.get("phases", ["Design", "Development", "Testing"])
-    costs = budget_data.get("costs", {})
+    costs = budget_data.get("costs", {
+        ("Module1", "Design"): 1000,
+        ("Module1", "Development"): 2000,
+        ("Module1", "Testing"): 500,
+        ("Module2", "Design"): 1200,
+        ("Module2", "Development"): 2500,
+        ("Module2", "Testing"): 600,
+    })
 
     # Example: If the response format is different, adjust the keys accordingly
     # modules = budget_data.get("project_modules", [])
