@@ -82,7 +82,7 @@ def call_gpt_for_budget(project_type):
         ("Module1", "Testing"): 1500,
         ("Module2", "Design"): 1200,
         ("Module2", "Development"): 3500,
-        ("Module2", "Testing"): 600,
+        ("Module2", "Testing"): 1800,
         ("Module1", "Development"): 2000,
         ("Module1", "Testing"): 500,
         ("Module2", "Design"): 1200,
